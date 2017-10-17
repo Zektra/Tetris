@@ -29,7 +29,7 @@ class TetrisGrid
     public void CreateGridArray()
     {
         bool[,] GridCheck = new bool[Height, Width];
-        GridCheck[1, 5] = IETS;
+        //GridCheck[1, 5] = IETS;
     }
 
 

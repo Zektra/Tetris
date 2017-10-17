@@ -15,61 +15,61 @@ public class Block
         CreateBlock();
     }
 
-    public void CreateBlock()
+    public bool[,] CreateBlock()
     {
-        bool[,] block = new bool[4, 4];
+		bool[,] block = new bool[4, 4];
         switch (WhichOne)
         {
             //I-Shape
             case 0:
-                block[1, 2] = true;
-                block[2, 2] = true;
-                block[3, 2] = true;
-                block[4, 2] = true;
+                block[0, 1] = true;
+                block[1, 1] = true;
+                block[2, 1] = true;
+                block[3, 1] = true;
                 break;
 			//O-Shape
             case 1:
+				block[2, 0] = true;
+				block[3, 0] = true;
+				block[2, 1] = true;
 				block[3, 1] = true;
-				block[4, 1] = true;
-				block[3, 2] = true;
-				block[4, 2] = true;
                 break;
 			//T-Shape
             case 2:
+				block[2, 0] = true;
+				block[2, 1] = true;
+				block[2, 2] = true;
 				block[3, 1] = true;
-				block[3, 2] = true;
-				block[3, 3] = true;
-				block[4, 2] = true;
                 break;
 			//S-Shape
             case 3:
-				block[3, 3] = true;
-				block[3, 2] = true;
-				block[4, 2] = true;
-				block[4, 1] = true;
+				block[2, 2] = true;
+				block[2, 1] = true;
+				block[3, 1] = true;
+				block[3, 0] = true;
                 break;
 			//Z-Shape
             case 4:
+				block[2, 0] = true;
+				block[2, 1] = true;
 				block[3, 1] = true;
 				block[3, 2] = true;
-				block[4, 2] = true;
-				block[4, 3] = true;
                 break;
 			//J-Shape
             case 5:
-				block[2, 2] = true;
-				block[3, 2] = true;
-				block[4, 2] = true;
-				block[4, 1] = true;
+				block[1, 1] = true;
+				block[2, 1] = true;
+				block[3, 1] = true;
+				block[3, 0] = true;
                 break;
 			//L-Shape
             case 6:
-				block[2, 2] = true;
+				block[1, 1] = true;
+				block[2, 1] = true;
+				block[3, 1] = true;
 				block[3, 2] = true;
-				block[4, 2] = true;
-				block[4, 3] = true;
                 break;
         }
-        
+		return block;   
     }
 }
