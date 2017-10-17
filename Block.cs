@@ -27,24 +27,48 @@ public class Block
                 block[3, 2] = true;
                 block[4, 2] = true;
                 break;
-
-            /*case 1:
+			//O-Shape
+            case 1:
+				block[3, 1] = true;
+				block[4, 1] = true;
+				block[3, 2] = true;
+				block[4, 2] = true;
                 break;
-
+			//T-Shape
             case 2:
+				block[3, 1] = true;
+				block[3, 2] = true;
+				block[3, 3] = true;
+				block[4, 2] = true;
                 break;
-
+			//S-Shape
             case 3:
+				block[3, 3] = true;
+				block[3, 2] = true;
+				block[4, 2] = true;
+				block[4, 1] = true;
                 break;
-
+			//Z-Shape
             case 4:
+				block[3, 1] = true;
+				block[3, 2] = true;
+				block[4, 2] = true;
+				block[4, 3] = true;
                 break;
-
+			//J-Shape
             case 5:
+				block[2, 2] = true;
+				block[3, 2] = true;
+				block[4, 2] = true;
+				block[4, 1] = true;
                 break;
-
+			//L-Shape
             case 6:
-                break;*/
+				block[2, 2] = true;
+				block[3, 2] = true;
+				block[4, 2] = true;
+				block[4, 3] = true;
+                break;
         }
         
     }
