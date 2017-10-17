@@ -1,0 +1,8 @@
+/bin/
+/obj/
+/x86/
+/x64/
+/Content/bin/
+/Content/obj/
+.userprefs
+*.dylib
