@@ -74,13 +74,13 @@ class TetrisGrid
      */
     public void Draw(GameTime gameTime, SpriteBatch s)
     {
- 
-        for (x = 0; x < Width; x++)
+		Console.WriteLine(block.CreateBlock());
+
+		for (x = 0; x < Width; x++)
         {
             for (y = 0; y < Height; y++)
             {
                 s.Draw(gridblock, (position + new Vector2(x * gridblock.Width, y * gridblock.Height)), Kleur);
-                
             }
         }
     }

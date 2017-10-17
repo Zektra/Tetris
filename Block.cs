@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 public class Block
 {
-    int WhichOne;
+    int WhichOne = 0;
 
     public Block(int WhichOne)
     {
@@ -70,6 +70,6 @@ public class Block
 				block[3, 2] = true;
                 break;
         }
-		return block;   
+		return block;
     }
 }
