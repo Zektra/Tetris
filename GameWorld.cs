@@ -76,8 +76,8 @@ class GameWorld
     {
         spriteBatch.Begin();
         grid.Draw(gameTime, spriteBatch);
-        DrawText("Hello! I want to die!", Vector2.Zero, spriteBatch);
-        spriteBatch.End();    
+        DrawText("Hello!", Vector2.Zero, spriteBatch);
+        spriteBatch.End();
     }
 
     /*

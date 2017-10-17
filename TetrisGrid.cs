@@ -7,12 +7,12 @@ using Microsoft.Xna.Framework.Graphics;
  */
 class TetrisGrid
 {
-    public TetrisGrid(Texture2D b)
-    {
-        gridblock = b;
-        position = Vector2.Zero;
-        this.Clear();
-    }
+	public TetrisGrid(Texture2D b)
+	{
+		gridblock = b;
+		position = Vector2.Zero;
+		this.Clear();
+	}
 
     /*
      * sprite for representing a single grid block
@@ -45,6 +45,7 @@ class TetrisGrid
      */
     public void Clear()
     {
+		bool[,] TGrid = new bool[Width, Height];
     }
 
     /*
@@ -52,7 +53,13 @@ class TetrisGrid
      */
     public void Draw(GameTime gameTime, SpriteBatch s)
     {
-		Console.WriteLine(Height);
+		for (int x = 0; x < Width; x++)
+		{
+			for (int y = 0; y < Height; y++)
+			{
+				s.Draw(gridblock, (position + new Vector2(x * gridblock.Width, y * gridblock.Height)), Color.White);
+			}
+		}
     }
 }
 
