@@ -14,7 +14,7 @@ class TetrisGrid
 		this.Clear();
 	}
 
-    /*
+	/*
      * sprite for representing a single grid block
      */
     Texture2D gridblock;
@@ -40,12 +40,13 @@ class TetrisGrid
         get { return 20; }
     }
 
-    /*
+	/*
      * clears the grid
      */
     public void Clear()
     {
 		bool[,] TGrid = new bool[Width, Height];
+		Console.WriteLine("Reset");
     }
 
     /*

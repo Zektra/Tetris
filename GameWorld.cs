@@ -43,6 +43,11 @@ class GameWorld
      */
     GameState gameState;
 
+	/*
+	 * the block
+	 */
+	TetrisBlock tetromino;
+
     /*
      * the main playing grid
      */
@@ -58,14 +63,34 @@ class GameWorld
         block = Content.Load<Texture2D>("block");
         font = Content.Load<SpriteFont>("SpelFont");
         grid = new TetrisGrid(block);
+		tetromino = new TetrisBlock();
     }
 
     public void Reset()
     {
+		grid.Clear();
     }
 
     public void HandleInput(GameTime gameTime, InputHelper inputHelper)
     {
+		if (inputHelper.KeyPressed(Keys.W))
+		{
+			Console.WriteLine("W");
+		}
+		if (inputHelper.KeyPressed(Keys.A) && tetromino.X - 1 != 0)
+		{
+			//tetromino.X--; // This one probably has to be changed with set
+			Console.WriteLine("A");
+		}
+		if (inputHelper.KeyPressed(Keys.S))
+		{
+			Console.WriteLine("S");
+		}
+		if (inputHelper.KeyPressed(Keys.D) && tetromino.X + 1 != grid.Width)
+		{
+			//tetromino.X++; // This one probably has to be changed with set
+			Console.WriteLine("D");
+		}
     }
 
     public void Update(GameTime gameTime)
