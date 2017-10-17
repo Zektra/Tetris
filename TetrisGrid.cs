@@ -8,82 +8,79 @@ using System.Collections.Generic;
  */
 class TetrisGrid
 {
-    Block block = new Block(0);
+	Block block = new Block(0);
+	bool[,] tGrid = new bool[12, 20];
 
-    public TetrisGrid(Texture2D b)
-    {
-        gridblock = b;
-        position = Vector2.Zero;
-        this.Clear();
-        CreateGridArray();
-        
-
-
-    }
-
-    
-    int x, y;
-    Color Kleur = new Color(255, 255, 255, 200);
-    TetrisGrid grid;
-
-    public void CreateGridArray()
-    {
-        bool[,] GridCheck = new bool[Height, Width];
-        //GridCheck[1, 5] = IETS;
-    }
+	public TetrisGrid(Texture2D b)
+	{
+		gridblock = b;
+		position = Vector2.Zero;
+		this.Clear();
+		CreateGridArray();
+	}
 
 
-    /*
+	int x, y;
+	Color Kleur = new Color(255, 255, 255, 200);
+	TetrisGrid grid;
+
+	public void CreateGridArray()
+	{
+		bool[,] GridCheck = new bool[Height, Width];
+		//GridCheck[1, 5] = IETS;
+	}
+
+
+	/*
      * sprite for representing a single grid block
      */
-    Texture2D gridblock;
+	Texture2D gridblock;
 
-    /*
+	/*
      * the position of the tetris grid
      */
-    Vector2 position;
+	Vector2 position;
 
-    /*
+	/*
      * width in terms of grid elements
      */
-    public int Width
-    {
-        get { return 12; }
-    }
+	public int Width
+	{
+		get { return 12; }
+	}
 
-    /*
+	/*
      * height in terms of grid elements
      */
-    public int Height
-    {
-        get { return 20; }
-    }
+	public int Height
+	{
+		get { return 20; }
+	}
 
- 
-
-
-    /*
+	/*
      * clears the grid
      */
-    public void Clear()
-    {
-    }
+	public void Clear()
+	{
+	}
 
-    /*
+	/*
      * draws the grid on the screen
      */
-    public void Draw(GameTime gameTime, SpriteBatch s)
-    {
-		Console.WriteLine(block.CreateBlock());
+	public void Draw(GameTime gameTime, SpriteBatch s)
+	{
 
 		for (x = 0; x < Width; x++)
-        {
-            for (y = 0; y < Height; y++)
-            {
-                s.Draw(gridblock, (position + new Vector2(x * gridblock.Width, y * gridblock.Height)), Kleur);
-            }
-        }
-    }
+		{
+			for (y = 0; y < Height; y++)
+			{
+				if (tGrid[x, y] == true)
+					s.Draw(gridblock, (position + new Vector2(x * gridblock.Width, y * gridblock.Height)), Kleur);
+				else
+					s.Draw(gridblock, (position + new Vector2(x * gridblock.Width, y * gridblock.Height)), Kleur);
+			}
+		}
+	}
 
 
 }
