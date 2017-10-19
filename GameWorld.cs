@@ -63,7 +63,7 @@ class GameWorld
         block = Content.Load<Texture2D>("block");
         font = Content.Load<SpriteFont>("SpelFont");
         grid = new TetrisGrid(block);
-		tetromino = new TetrisBlock();
+		tetromino = new TetrisBlock(block);
     }
 
     public void Reset()
@@ -76,31 +76,48 @@ class GameWorld
 		if (inputHelper.KeyPressed(Keys.W))
 		{
 			Console.WriteLine("W");
+            tetromino.Up();
 		}
-		if (inputHelper.KeyPressed(Keys.A) && tetromino.X - 1 != 0)
+		if (inputHelper.KeyPressed(Keys.A))
 		{
 			//tetromino.X--; // This one probably has to be changed with set
 			Console.WriteLine("A");
+            tetromino.Left();
 		}
 		if (inputHelper.KeyPressed(Keys.S))
 		{
 			Console.WriteLine("S");
+            tetromino.Down();
 		}
-		if (inputHelper.KeyPressed(Keys.D) && tetromino.X + 1 != grid.Width)
+		if (inputHelper.KeyPressed(Keys.D))
 		{
 			//tetromino.X++; // This one probably has to be changed with set
 			Console.WriteLine("D");
+            tetromino.Right();
+		}
+		if (inputHelper.KeyPressed(Keys.K))
+		{
+			for (int x = 0; x < tetromino.Width; x++)
+			{
+				Console.WriteLine();
+				for (int y = 0; y < tetromino.Width; y++)
+				{
+					Console.Write((grid.Check(tetromino.Position.X, tetromino.Position.Y, x, y)) && (tetromino.Check(x, y) != false));
+				}
+			}
 		}
     }
 
     public void Update(GameTime gameTime)
     {
+        
     }
 
     public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
     {
         spriteBatch.Begin();
         grid.Draw(gameTime, spriteBatch);
+        tetromino.Draw(gameTime, spriteBatch);
         DrawText("Hello!", Vector2.Zero, spriteBatch);
         spriteBatch.End();
     }
