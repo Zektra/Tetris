@@ -10,7 +10,6 @@ class I : TetrisBlock
 	public I(Texture2D b)
 		: base(b)
 	{
-		Clear();
 	}
 	public override void Clear()
 	{
@@ -27,7 +26,6 @@ class S : TetrisBlock
 	public S(Texture2D b)
 		: base(b)
 	{
-		Clear();
 	}
 	public override void Clear()
 	{
@@ -44,7 +42,6 @@ class Z : TetrisBlock
 	public Z(Texture2D b)
 		: base(b)
 	{
-		Clear();
 	}
 	public override void Clear()
 	{
@@ -61,7 +58,6 @@ class J : TetrisBlock
 	public J(Texture2D b)
 		: base(b)
 	{
-		Clear();
 	}
 	public override void Clear()
 	{
@@ -78,7 +74,6 @@ class O : TetrisBlock
 	public O(Texture2D b)
 		: base(b)
 	{
-		Clear();
 	}
 	public override void Clear()
 	{
@@ -95,7 +90,6 @@ class L : TetrisBlock
 	public L(Texture2D b)
 		: base(b)
 	{
-		Clear();
 	}
 	public override void Clear()
 	{
@@ -112,7 +106,6 @@ class T : TetrisBlock
 	public T(Texture2D b)
 		: base(b)
 	{
-		Clear();
 	}
 	public override void Clear()
 	{

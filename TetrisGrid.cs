@@ -59,7 +59,7 @@ class TetrisGrid
 
 	public bool Check(float tposx, float tposy, int x, int y)
     {
-        return TGrid[(int)tposx / gridblock.Width + y, (int)tposy / gridblock.Width + x];
+		return TGrid[(int)tposx / gridblock.Width + y, (int)tposy / gridblock.Width + x];
     }
 	/*
      * draws the grid on the screen

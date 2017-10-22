@@ -26,6 +26,8 @@ class GameWorld
 	float speed = 1000;
 	float timer = 1000;
 
+	ChooseBlock chooseBlock;
+
     /*
      * random number generator
      */
@@ -80,6 +82,7 @@ class GameWorld
         Jblok = new J(block);
         Lblok = new L(block);
         Tblok = new T(block);
+		chooseBlock = new ChooseBlock();
         tetromino = new TetrisBlock(block);
     }
 
@@ -136,7 +139,7 @@ class GameWorld
     {
 
         spriteBatch.Begin();
-		switch (1)
+		switch (chooseBlock.Current)
 		{
 			case 0:
 				Iblok.Draw(gameTime, spriteBatch);

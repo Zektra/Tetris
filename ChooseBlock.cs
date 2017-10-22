@@ -1,21 +1,25 @@
 ﻿using System;
-namespace Tetris
-{
+
 	public class ChooseBlock
 	{
+		int first, second;
 		Random r = new Random();
+		public void genFirst()
+		{
+			first = r.Next(0, 6);
+			second = r.Next(0, 6);
+		}
 		public void genNext()
 		{
-			int first = r.Next(0, 6);
-			int second = r.Next(0, 6);
+			first = second;
+			second = r.Next(0, 6);
 		}
-		public int first
+		public int Current
 		{
 			get { return first; }
 		}
-		public int second
+		public int Next
 		{
 			get { return second; }
 		}
 	}
-}
