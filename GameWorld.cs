@@ -23,6 +23,9 @@ class GameWorld
      */
     int screenWidth, screenHeight;
 
+	float speed = 1000;
+	float timer = 1000;
+
     /*
      * random number generator
      */
@@ -84,10 +87,12 @@ class GameWorld
 			Console.WriteLine("A");
             tetromino.Left();
 		}
-		if (inputHelper.KeyPressed(Keys.S))
+		timer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+		if (timer < 0)
 		{
 			Console.WriteLine("S");
             tetromino.Down();
+			timer = (float)gameTime.ElapsedGameTime.TotalMilliseconds + speed;
 		}
 		if (inputHelper.KeyPressed(Keys.D))
 		{
