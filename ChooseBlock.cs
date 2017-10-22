@@ -3,16 +3,19 @@ namespace Tetris
 {
 	public class ChooseBlock
 	{
-		Random r;
-
-		public ChooseBlock()
+		Random r = new Random();
+		public void genNext()
 		{
-			r = new Random();
+			int first = r.Next(0, 6);
+			int second = r.Next(0, 6);
 		}
-		public int random()
+		public int first
 		{
-			int rand = r.Next();
-			return rand;
+			get { return first; }
+		}
+		public int second
+		{
+			get { return second; }
 		}
 	}
 }

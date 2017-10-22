@@ -29,7 +29,7 @@ class GameWorld
     /*
      * random number generator
      */
-    ChooseBlock current, next;
+    //ChooseBlock current, next;
 
     /*
      * main game font
@@ -67,8 +67,8 @@ class GameWorld
     {
         screenWidth = width;
         screenHeight = height;
-        current = new ChooseBlock();
-        next = new ChooseBlock();
+        //current = new ChooseBlock();
+        //next = new ChooseBlock();
         gameState = GameState.Playing;
         block = Content.Load<Texture2D>("block");
         font = Content.Load<SpriteFont>("SpelFont");
@@ -136,7 +136,31 @@ class GameWorld
     {
 
         spriteBatch.Begin();
-        grid.Draw(gameTime, spriteBatch);
+		switch (1)
+		{
+			case 0:
+				Iblok.Draw(gameTime, spriteBatch);
+				break;
+			case 1:
+				Oblok.Draw(gameTime, spriteBatch);
+				break;
+			case 2:
+				Tblok.Draw(gameTime, spriteBatch);
+				break;
+			case 3:
+				Sblok.Draw(gameTime, spriteBatch);
+				break;
+			case 4:
+				Zblok.Draw(gameTime, spriteBatch);
+				break;
+			case 5:
+				Jblok.Draw(gameTime, spriteBatch);
+				break;
+			case 6:
+				Lblok.Draw(gameTime, spriteBatch);
+				break;	
+		}
+		grid.Draw(gameTime, spriteBatch);
         DrawText("Hello!", Vector2.Zero, spriteBatch);
         spriteBatch.End();
     }
