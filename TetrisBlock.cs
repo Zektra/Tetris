@@ -10,6 +10,16 @@ class I : TetrisBlock
 	public I(Texture2D b)
 		: base(b)
 	{
+		Clear();
+	}
+	public override void Clear()
+	{
+		TGrid = new bool[Width, Height];
+		Console.WriteLine("Reset");
+		TGrid[3, 0] = true;
+		TGrid[3, 1] = true;
+		TGrid[3, 2] = true;
+		TGrid[3, 3] = true;
 	}
 }
 class S : TetrisBlock
@@ -17,6 +27,16 @@ class S : TetrisBlock
 	public S(Texture2D b)
 		: base(b)
 	{
+		Clear();
+	}
+	public override void Clear()
+	{
+		TGrid = new bool[Width, Height];
+		Console.WriteLine("Reset");
+		TGrid[0, 3] = true;
+		TGrid[1, 3] = true;
+		TGrid[2, 2] = true;
+		TGrid[3, 2] = true;
 	}
 }
 class Z : TetrisBlock
@@ -24,6 +44,16 @@ class Z : TetrisBlock
 	public Z(Texture2D b)
 		: base(b)
 	{
+		Clear();
+	}
+	public override void Clear()
+	{
+		TGrid = new bool[Width, Height];
+		Console.WriteLine("Reset");
+		TGrid[0, 2] = true;
+		TGrid[1, 2] = true;
+		TGrid[2, 3] = true;
+		TGrid[3, 3] = true;
 	}
 }
 class J : TetrisBlock
@@ -31,6 +61,16 @@ class J : TetrisBlock
 	public J(Texture2D b)
 		: base(b)
 	{
+		Clear();
+	}
+	public override void Clear()
+	{
+		TGrid = new bool[Width, Height];
+		Console.WriteLine("Reset");
+		TGrid[2, 1] = true;
+		TGrid[2, 2] = true;
+		TGrid[2, 3] = true;
+		TGrid[1, 3] = true;
 	}
 }
 class O : TetrisBlock
@@ -38,6 +78,16 @@ class O : TetrisBlock
 	public O(Texture2D b)
 		: base(b)
 	{
+		Clear();
+	}
+	public override void Clear()
+	{
+		TGrid = new bool[Width, Height];
+		Console.WriteLine("Reset");
+		TGrid[1, 2] = true;
+		TGrid[2, 2] = true;
+		TGrid[1, 3] = true;
+		TGrid[2, 3] = true;
 	}
 }
 class L : TetrisBlock
@@ -45,6 +95,16 @@ class L : TetrisBlock
 	public L(Texture2D b)
 		: base(b)
 	{
+		Clear();
+	}
+	public override void Clear()
+	{
+		TGrid = new bool[Width, Height];
+		Console.WriteLine("Reset");
+		TGrid[2, 1] = true;
+		TGrid[2, 2] = true;
+		TGrid[2, 3] = true;
+		TGrid[3, 3] = true;
 	}
 }
 class T : TetrisBlock
@@ -52,11 +112,21 @@ class T : TetrisBlock
 	public T(Texture2D b)
 		: base(b)
 	{
+		Clear();
+	}
+	public override void Clear()
+	{
+		TGrid = new bool[Width, Height];
+		Console.WriteLine("Reset");
+		TGrid[1, 2] = true;
+		TGrid[0, 3] = true;
+		TGrid[1, 3] = true;
+		TGrid[2, 3] = true;
 	}
 }
 
 
-class TetrisBlock
+public class TetrisBlock
 {
 	public TetrisBlock(Texture2D b)
 	{
@@ -65,7 +135,7 @@ class TetrisBlock
 		this.Clear();
 	}
 
-	bool[,] TGrid;
+	public bool[,] TGrid;
 
 	/*
      * sprite for representing a single grid block
@@ -104,14 +174,10 @@ class TetrisBlock
 	/*
      * clears the grid
      */
-	public void Clear()
+	public virtual void Clear()
 	{
 		TGrid = new bool[Width, Height];
 		Console.WriteLine("Reset");
-		TGrid[1, 2] = true;
-		TGrid[0, 3] = true;
-		TGrid[1, 3] = true;
-		TGrid[2, 3] = true;
 	}
 
 	/*
