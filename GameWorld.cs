@@ -28,6 +28,7 @@ class GameWorld
 
 	ChooseBlock chooseBlock;
 	bool Down = false;
+	int score = 0;
 
     /*
      * random number generator
@@ -126,7 +127,7 @@ class GameWorld
                     Console.WriteLine();
                     for (int y = 0; y < Iblok.Width; y++)
                     {
-						if ((grid.Check(Iblok.Position.X, Iblok.Position.Y, x, y)) && (Iblok.Check(x, y) != false))
+						if ((grid.Check(Iblok.Position.X, Iblok.Position.Y, x + 1, y)) && (Iblok.Check(x, y) != false))
 							Down = true;
                     }
                 }
@@ -141,6 +142,7 @@ class GameWorld
 								grid.Place(Iblok.Position.X, Iblok.Position.Y, x, y);
 						}
 					}
+					score += grid.CheckLine();
 					Iblok.Clear();
 					Down = false;
 					chooseBlock.genNext();
@@ -176,7 +178,7 @@ class GameWorld
 					Console.WriteLine();
 					for (int y = 0; y < Oblok.Width; y++)
 					{
-						if ((grid.Check(Oblok.Position.X, Oblok.Position.Y, x, y)) && (Oblok.Check(x, y) != false))
+						if ((grid.Check(Oblok.Position.X, Oblok.Position.Y, x + 1, y)) && (Oblok.Check(x, y) != false))
 							Down = true;
 					}
 				}
@@ -191,6 +193,7 @@ class GameWorld
 								grid.Place(Oblok.Position.X, Oblok.Position.Y, x, y);
 						}
 					}
+					score += grid.CheckLine();
 					Oblok.Clear();
 					Down = false;
 					chooseBlock.genNext();
@@ -226,7 +229,7 @@ class GameWorld
 					Console.WriteLine();
 					for (int y = 0; y < Tblok.Width; y++)
 					{
-						if ((grid.Check(Tblok.Position.X, Tblok.Position.Y, x, y)) && (Tblok.Check(x, y) != false))
+						if ((grid.Check(Tblok.Position.X, Tblok.Position.Y, x + 1, y)) && (Tblok.Check(x, y) != false))
 							Down = true;
 					}
 				}
@@ -241,6 +244,7 @@ class GameWorld
 								grid.Place(Tblok.Position.X, Tblok.Position.Y, x, y);
 						}
 					}
+					score += grid.CheckLine();
 					Tblok.Clear();
 					Down = false;
 					chooseBlock.genNext();
@@ -276,7 +280,7 @@ class GameWorld
 					Console.WriteLine();
 					for (int y = 0; y < Sblok.Width; y++)
 					{
-						if ((grid.Check(Sblok.Position.X, Sblok.Position.Y, x, y)) && (Sblok.Check(x, y) != false))
+						if ((grid.Check(Sblok.Position.X, Sblok.Position.Y, x + 1, y)) && (Sblok.Check(x, y) != false))
 							Down = true;
 					}
 				}
@@ -291,6 +295,7 @@ class GameWorld
 								grid.Place(Sblok.Position.X, Sblok.Position.Y, x, y);
 						}
 					}
+					score += grid.CheckLine();
 					Sblok.Clear();
 					Down = false;
 					chooseBlock.genNext();
@@ -326,7 +331,7 @@ class GameWorld
 					Console.WriteLine();
 					for (int y = 0; y < Zblok.Width; y++)
 					{
-						if ((grid.Check(Zblok.Position.X, Zblok.Position.Y, x, y)) && (Zblok.Check(x, y) != false))
+						if ((grid.Check(Zblok.Position.X, Zblok.Position.Y, x + 1, y)) && (Zblok.Check(x, y) != false))
 							Down = true;
 					}
 				}
@@ -341,6 +346,7 @@ class GameWorld
 								grid.Place(Zblok.Position.X, Zblok.Position.Y, x, y);
 						}
 					}
+					score += grid.CheckLine();
 					Zblok.Clear();
 					Down = false;
 					chooseBlock.genNext();
@@ -376,7 +382,7 @@ class GameWorld
 					Console.WriteLine();
 					for (int y = 0; y < Jblok.Width; y++)
 					{
-						if ((grid.Check(Jblok.Position.X, Jblok.Position.Y, x, y)) && (Jblok.Check(x, y) != false))
+						if ((grid.Check(Jblok.Position.X, Jblok.Position.Y, x + 1, y)) && (Jblok.Check(x, y) != false))
 							Down = true;
 					}
 				}
@@ -391,6 +397,7 @@ class GameWorld
 								grid.Place(Jblok.Position.X, Jblok.Position.Y, x, y);
 						}
 					}
+					score += grid.CheckLine();
 					Jblok.Clear();
 					Down = false;
 					chooseBlock.genNext();
@@ -426,7 +433,7 @@ class GameWorld
 					Console.WriteLine();
 					for (int y = 0; y < Lblok.Width; y++)
 					{
-						if ((grid.Check(Lblok.Position.X, Lblok.Position.Y, x, y)) && (Lblok.Check(x, y) != false))
+						if ((grid.Check(Lblok.Position.X, Lblok.Position.Y, x + 1, y)) && (Lblok.Check(x, y) != false))
 							Down = true;
 					}
 				}
@@ -441,6 +448,7 @@ class GameWorld
 								grid.Place(Lblok.Position.X, Lblok.Position.Y, x, y);
 						}
 					}
+					score += grid.CheckLine();
 					Lblok.Clear();
 					Down = false;
 					chooseBlock.genNext();
@@ -484,7 +492,7 @@ class GameWorld
 				Lblok.Draw(gameTime, spriteBatch);
 				break;
 		}
-        DrawText("Hello!", Vector2.Zero, spriteBatch);
+		DrawText(score.ToString(), Vector2.Zero, spriteBatch);
         spriteBatch.End();
     }
 

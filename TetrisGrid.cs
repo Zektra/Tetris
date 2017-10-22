@@ -54,13 +54,43 @@ class TetrisGrid
     {
 		TGrid = new bool[Width, Height];;
 		Console.WriteLine("Reset");
-		TGrid[8, 7] = true;
-    }
+		TGrid[11, 5] = true;
+		TGrid[10, 5] = true;
+	}
 
 	public bool Check(float tposx, float tposy, int x, int y)
     {
 		return TGrid[(int)tposx / gridblock.Width + y, (int)tposy / gridblock.Width + x];
     }
+
+	int s = 0;
+	int k = 0;
+
+	public int CheckLine()
+	{
+		s = 0;
+		for (int y = 0; y < Height; y++)
+		{
+			int z = 0;
+			for (int x = 0; x < Width; x++)
+			{
+				if (TGrid[y, x])
+					z++;
+				if (z == 12)
+				{
+					for (int u = 0; u < Height; u++)
+					{
+						TGrid[y, u] = TGrid[y - 1, u];
+					}
+					z = 0;
+					s++;
+				}
+			}
+		}
+		return s;
+	}
+
+
 	/*
      * draws the grid on the screen
      */
