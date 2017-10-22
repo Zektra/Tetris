@@ -54,8 +54,18 @@ class TetrisGrid
     {
 		TGrid = new bool[Width, Height];;
 		Console.WriteLine("Reset");
-		TGrid[11, 5] = true;
-		TGrid[10, 5] = true;
+		TGrid[11, 19] = true;
+		TGrid[10, 19] = true;
+		TGrid[9, 19] = true;
+		TGrid[8, 19] = true;
+		TGrid[7, 19] = true;
+		TGrid[6, 19] = true;
+		TGrid[5, 19] = true;
+		TGrid[4, 19] = true;
+		TGrid[3, 19] = true;
+		TGrid[2, 19] = true;
+		TGrid[1, 19] = true;
+		TGrid[0, 19] = true;
 	}
 
 	public bool Check(float tposx, float tposy, int x, int y)
@@ -64,23 +74,22 @@ class TetrisGrid
     }
 
 	int s = 0;
-	int k = 0;
 
 	public int CheckLine()
 	{
 		s = 0;
-		for (int y = 0; y < Height; y++)
+		for (int y = 0; y < Width; y++)
 		{
 			int z = 0;
-			for (int x = 0; x < Width; x++)
+			for (int x = 0; x < Height; x++)
 			{
 				if (TGrid[y, x])
 					z++;
 				if (z == 12)
 				{
-					for (int u = 0; u < Height; u++)
+					for (int u = 0; u < Width; u++)
 					{
-						TGrid[y, u] = TGrid[y - 1, u];
+						Console.WriteLine(TGrid[y, u]);
 					}
 					z = 0;
 					s++;

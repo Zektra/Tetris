@@ -120,7 +120,7 @@ class GameWorld
                 {
                     //tetromino.X++; // This one probably has to be changed with set
                     Console.WriteLine("D");
-                    Iblok.Right();
+					Iblok.Right();
                 }
                 for (int x = 0; x < Iblok.Width; x++)
                 {
@@ -178,7 +178,10 @@ class GameWorld
 					Console.WriteLine();
 					for (int y = 0; y < Oblok.Width; y++)
 					{
-						if ((grid.Check(Oblok.Position.X, Oblok.Position.Y, x + 1, y)) && (Oblok.Check(x, y) != false))
+
+						if ((int)Oblok.Position.Y - 1 == 0)
+							Down = true;
+						else if ((grid.Check(Oblok.Position.X, Oblok.Position.Y, x + 1, y)) && (Oblok.Check(x, y) != false))
 							Down = true;
 					}
 				}
@@ -229,7 +232,10 @@ class GameWorld
 					Console.WriteLine();
 					for (int y = 0; y < Tblok.Width; y++)
 					{
-						if ((grid.Check(Tblok.Position.X, Tblok.Position.Y, x + 1, y)) && (Tblok.Check(x, y) != false))
+
+						if ((int)Tblok.Position.Y - 1 == 0)
+							Down = true;
+						else if ((grid.Check(Tblok.Position.X, Tblok.Position.Y, x + 1, y)) && (Tblok.Check(x, y) != false))
 							Down = true;
 					}
 				}
@@ -280,7 +286,10 @@ class GameWorld
 					Console.WriteLine();
 					for (int y = 0; y < Sblok.Width; y++)
 					{
-						if ((grid.Check(Sblok.Position.X, Sblok.Position.Y, x + 1, y)) && (Sblok.Check(x, y) != false))
+
+						if ((int)Sblok.Position.Y - 1 == 0)
+							Down = true;
+						else if ((grid.Check(Sblok.Position.X, Sblok.Position.Y, x + 1, y)) && (Sblok.Check(x, y) != false))
 							Down = true;
 					}
 				}
@@ -331,7 +340,10 @@ class GameWorld
 					Console.WriteLine();
 					for (int y = 0; y < Zblok.Width; y++)
 					{
-						if ((grid.Check(Zblok.Position.X, Zblok.Position.Y, x + 1, y)) && (Zblok.Check(x, y) != false))
+
+						if ((int)Zblok.Position.Y - 1 == 0)
+							Down = true;
+						else if ((grid.Check(Zblok.Position.X, Zblok.Position.Y, x + 1, y)) && (Zblok.Check(x, y) != false))
 							Down = true;
 					}
 				}
@@ -382,7 +394,10 @@ class GameWorld
 					Console.WriteLine();
 					for (int y = 0; y < Jblok.Width; y++)
 					{
-						if ((grid.Check(Jblok.Position.X, Jblok.Position.Y, x + 1, y)) && (Jblok.Check(x, y) != false))
+
+						if ((int)Jblok.Position.Y - 1 == 0)
+							Down = true;
+						else if ((grid.Check(Jblok.Position.X, Jblok.Position.Y, x + 1, y)) && (Jblok.Check(x, y) != false))
 							Down = true;
 					}
 				}
@@ -433,7 +448,10 @@ class GameWorld
 					Console.WriteLine();
 					for (int y = 0; y < Lblok.Width; y++)
 					{
-						if ((grid.Check(Lblok.Position.X, Lblok.Position.Y, x + 1, y)) && (Lblok.Check(x, y) != false))
+
+						if ((int)Lblok.Position.Y - 1 == 0)
+							Down = true;
+						else if ((grid.Check(Lblok.Position.X, Lblok.Position.Y, x + 1, y)) && (Lblok.Check(x, y) != false))
 							Down = true;
 					}
 				}

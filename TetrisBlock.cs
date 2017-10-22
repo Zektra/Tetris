@@ -10,15 +10,18 @@ class I : TetrisBlock
 	public I(Texture2D b)
 		: base(b)
 	{
+
 	}
 	public override void Clear()
 	{
+		centerx = 1;
+		centery = 1;
 		TGrid = new bool[Width, Height];
 		Console.WriteLine("Reset");
-		TGrid[3, 0] = true;
-		TGrid[3, 1] = true;
-		TGrid[3, 2] = true;
-		TGrid[3, 3] = true;
+		TGrid[1, 0] = true;
+		TGrid[1, 1] = true;
+		TGrid[1, 2] = true;
+		TGrid[1, 3] = true;
 		position = Vector2.Zero;
 	}
 }
@@ -30,12 +33,14 @@ class S : TetrisBlock
 	}
 	public override void Clear()
 	{
+		centerx = 1;
+		centery = 1;
 		TGrid = new bool[Width, Height];
 		Console.WriteLine("Reset");
-		TGrid[0, 3] = true;
-		TGrid[1, 3] = true;
+		TGrid[0, 2] = true;
 		TGrid[1, 2] = true;
-		TGrid[2, 2] = true;
+		TGrid[1, 1] = true;
+		TGrid[2, 1] = true;
 		position = Vector2.Zero;
 	}
 }
@@ -47,6 +52,8 @@ class Z : TetrisBlock
 	}
 	public override void Clear()
 	{
+		centerx = 1;
+		centery = 3;
 		TGrid = new bool[Width, Height];
 		Console.WriteLine("Reset");
 		TGrid[0, 2] = true;
@@ -64,12 +71,14 @@ class J : TetrisBlock
 	}
 	public override void Clear()
 	{
+		centerx = 1;
+		centery = 1;
 		TGrid = new bool[Width, Height];
 		Console.WriteLine("Reset");
-		TGrid[2, 1] = true;
-		TGrid[2, 2] = true;
-		TGrid[2, 3] = true;
-		TGrid[1, 3] = true;
+		TGrid[1, 0] = true;
+		TGrid[1, 1] = true;
+		TGrid[1, 2] = true;
+		TGrid[0, 2] = true;
 		position = Vector2.Zero;
 	}
 }
@@ -83,10 +92,10 @@ class O : TetrisBlock
 	{
 		TGrid = new bool[Width, Height];
 		Console.WriteLine("Reset");
-		TGrid[1, 2] = true;
-		TGrid[2, 2] = true;
-		TGrid[1, 3] = true;
-		TGrid[2, 3] = true;
+		TGrid[0, 0] = true;
+		TGrid[0, 1] = true;
+		TGrid[1, 1] = true;
+		TGrid[1, 0] = true;
 		position = Vector2.Zero;
 	}
 }
@@ -98,12 +107,14 @@ class L : TetrisBlock
 	}
 	public override void Clear()
 	{
+		centerx = 1;
+		centery = 1;
 		TGrid = new bool[Width, Height];
 		Console.WriteLine("Reset");
-		TGrid[2, 1] = true;
-		TGrid[2, 2] = true;
-		TGrid[2, 3] = true;
-		TGrid[3, 3] = true;
+		TGrid[0, 0] = true;
+		TGrid[1, 0] = true;
+		TGrid[1, 1] = true;
+		TGrid[1, 2] = true;
 		position = Vector2.Zero;
 	}
 }
@@ -115,16 +126,17 @@ class T : TetrisBlock
 	}
 	public override void Clear()
 	{
+		centerx = 1;
+		centery = 1;
 		TGrid = new bool[Width, Height];
 		Console.WriteLine("Reset");
+		TGrid[1, 0] = true;
+		TGrid[1, 1] = true;
 		TGrid[1, 2] = true;
-		TGrid[0, 3] = true;
-		TGrid[1, 3] = true;
-		TGrid[2, 3] = true;
+		TGrid[0, 1] = true;
 		position = Vector2.Zero;
 	}
 }
-
 
 public class TetrisBlock
 {
@@ -136,7 +148,32 @@ public class TetrisBlock
 	}
 
 	public bool[,] TGrid;
+	public int centerx, centery;
+	public bool[,] temp;
 
+	public bool[,] Temp
+	{
+		get { return temp; }
+		set { temp = value; }
+	}
+
+	public void TurnLeft()
+	{
+		for (int x = 0; x < Width; x++)
+		{
+			for (int y = 0; y < Height; y++)
+			{
+				if (x != centerx && y != centery)
+				{
+					int a = x - centerx;
+					int b = y - centery;
+					int newx = -1 * b;
+					int newy = a;
+					TGrid[x, y] = Temp[newx, newy];
+				}
+			}
+		}
+	}
 	/*
      * sprite for representing a single grid block
      */
