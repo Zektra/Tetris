@@ -42,6 +42,11 @@ class TetrisGrid
         get { return 20; }
     }
 
+	public void Place(int x, int y)
+	{
+		TGrid[y, x] = true;
+	}
+
     /*
      * clears the grid
      */

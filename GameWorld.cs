@@ -29,7 +29,7 @@ class GameWorld
     /*
      * random number generator
      */
-    Random random;
+    ChooseBlock current, next;
 
     /*
      * main game font
@@ -50,6 +50,13 @@ class GameWorld
 	 * the block
 	 */
 	TetrisBlock tetromino;
+    I Iblok;
+    O Oblok;
+    S Sblok;
+    Z Zblok;
+    J Jblok;
+    L Lblok;
+    T Tblok;
 
     /*
      * the main playing grid
@@ -60,13 +67,20 @@ class GameWorld
     {
         screenWidth = width;
         screenHeight = height;
-        random = new Random();
+        current = new ChooseBlock();
+        next = new ChooseBlock();
         gameState = GameState.Playing;
-
         block = Content.Load<Texture2D>("block");
         font = Content.Load<SpriteFont>("SpelFont");
         grid = new TetrisGrid(block);
-		tetromino = new TetrisBlock(block);
+        Iblok = new I(block);
+        Oblok = new O(block);
+        Sblok = new S(block);
+        Zblok = new Z(block);
+        Jblok = new J(block);
+        Lblok = new L(block);
+        Tblok = new T(block);
+        tetromino = new TetrisBlock(block);
     }
 
     public void Reset()
@@ -120,6 +134,7 @@ class GameWorld
 
     public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
     {
+
         spriteBatch.Begin();
         grid.Draw(gameTime, spriteBatch);
         DrawText("Hello!", Vector2.Zero, spriteBatch);
@@ -134,8 +149,5 @@ class GameWorld
         spriteBatch.DrawString(font, text, positie, Color.Blue);
     }
 
-    public Random Random
-    {
-        get { return random; }
-    }
+
 }
