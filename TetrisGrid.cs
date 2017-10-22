@@ -42,9 +42,9 @@ class TetrisGrid
         get { return 20; }
     }
 
-	public void Place(int x, int y)
+	public void Place(float tposx, float tposy, int x, int y)
 	{
-		TGrid[y, x] = true;
+		TGrid[(int)tposx / gridblock.Width + y, (int)tposy / gridblock.Width + x] = true;
 	}
 
     /*
@@ -54,7 +54,7 @@ class TetrisGrid
     {
 		TGrid = new bool[Width, Height];;
 		Console.WriteLine("Reset");
-		TGrid[2, 5] = true;
+		TGrid[8, 7] = true;
     }
 
 	public bool Check(float tposx, float tposy, int x, int y)

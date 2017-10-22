@@ -19,6 +19,7 @@ class I : TetrisBlock
 		TGrid[3, 1] = true;
 		TGrid[3, 2] = true;
 		TGrid[3, 3] = true;
+		position = Vector2.Zero;
 	}
 }
 class S : TetrisBlock
@@ -33,8 +34,9 @@ class S : TetrisBlock
 		Console.WriteLine("Reset");
 		TGrid[0, 3] = true;
 		TGrid[1, 3] = true;
+		TGrid[1, 2] = true;
 		TGrid[2, 2] = true;
-		TGrid[3, 2] = true;
+		position = Vector2.Zero;
 	}
 }
 class Z : TetrisBlock
@@ -49,8 +51,9 @@ class Z : TetrisBlock
 		Console.WriteLine("Reset");
 		TGrid[0, 2] = true;
 		TGrid[1, 2] = true;
+		TGrid[1, 3] = true;
 		TGrid[2, 3] = true;
-		TGrid[3, 3] = true;
+		position = Vector2.Zero;
 	}
 }
 class J : TetrisBlock
@@ -67,6 +70,7 @@ class J : TetrisBlock
 		TGrid[2, 2] = true;
 		TGrid[2, 3] = true;
 		TGrid[1, 3] = true;
+		position = Vector2.Zero;
 	}
 }
 class O : TetrisBlock
@@ -83,6 +87,7 @@ class O : TetrisBlock
 		TGrid[2, 2] = true;
 		TGrid[1, 3] = true;
 		TGrid[2, 3] = true;
+		position = Vector2.Zero;
 	}
 }
 class L : TetrisBlock
@@ -99,6 +104,7 @@ class L : TetrisBlock
 		TGrid[2, 2] = true;
 		TGrid[2, 3] = true;
 		TGrid[3, 3] = true;
+		position = Vector2.Zero;
 	}
 }
 class T : TetrisBlock
@@ -115,6 +121,7 @@ class T : TetrisBlock
 		TGrid[0, 3] = true;
 		TGrid[1, 3] = true;
 		TGrid[2, 3] = true;
+		position = Vector2.Zero;
 	}
 }
 

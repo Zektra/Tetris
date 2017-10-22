@@ -27,6 +27,7 @@ class GameWorld
 	float timer = 1000;
 
 	ChooseBlock chooseBlock;
+	bool Down = false;
 
     /*
      * random number generator
@@ -93,41 +94,360 @@ class GameWorld
 
     public void HandleInput(GameTime gameTime, InputHelper inputHelper)
     {
-		if (inputHelper.KeyPressed(Keys.W))
-		{
-			Console.WriteLine("W");
-            tetromino.Up();
-		}
-		if (inputHelper.KeyPressed(Keys.A))
-		{
-			//tetromino.X--; // This one probably has to be changed with set
-			Console.WriteLine("A");
-            tetromino.Left();
-		}
-		timer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-		if (timer < 0)
-		{
-			Console.WriteLine("S");
-            tetromino.Down();
-			timer = (float)gameTime.ElapsedGameTime.TotalMilliseconds + speed;
-		}
-		if (inputHelper.KeyPressed(Keys.D))
-		{
-			//tetromino.X++; // This one probably has to be changed with set
-			Console.WriteLine("D");
-            tetromino.Right();
-		}
-		if (inputHelper.KeyPressed(Keys.K))
-		{
-			for (int x = 0; x < tetromino.Width; x++)
-			{
-				Console.WriteLine();
-				for (int y = 0; y < tetromino.Width; y++)
+        switch (chooseBlock.Current)
+        {
+            case 0:
+                if (inputHelper.KeyPressed(Keys.W))
+                {
+                    
+                    Iblok.Up();
+                }
+                if (inputHelper.KeyPressed(Keys.A))
+                {
+                    //tetromino.X--; // This one probably has to be changed with set
+                    
+                    Iblok.Left();
+                }
+                timer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (timer < 0)
+                {
+                    Console.WriteLine("S");
+                    Iblok.Down();
+                    timer = (float)gameTime.ElapsedGameTime.TotalMilliseconds + speed;
+                }
+                if (inputHelper.KeyPressed(Keys.D))
+                {
+                    //tetromino.X++; // This one probably has to be changed with set
+                    Console.WriteLine("D");
+                    Iblok.Right();
+                }
+                for (int x = 0; x < Iblok.Width; x++)
+                {
+                    Console.WriteLine();
+                    for (int y = 0; y < Iblok.Width; y++)
+                    {
+						if ((grid.Check(Iblok.Position.X, Iblok.Position.Y, x, y)) && (Iblok.Check(x, y) != false))
+							Down = true;
+                    }
+                }
+				if (Down)
 				{
-					Console.Write((grid.Check(tetromino.Position.X, tetromino.Position.Y, x, y)) && (tetromino.Check(x, y) != false));
+					for (int x = 0; x < Iblok.Width; x++)
+					{
+						Console.WriteLine();
+						for (int y = 0; y < Iblok.Width; y++)
+						{
+							if (Iblok.Check(x, y) != false)
+								grid.Place(Iblok.Position.X, Iblok.Position.Y, x, y);
+						}
+					}
+					Iblok.Clear();
+					Down = false;
+					chooseBlock.genNext();
 				}
-			}
-		}
+                break;
+            case 1:
+                if (inputHelper.KeyPressed(Keys.W))
+                {
+                    
+                    Oblok.Up();
+                }
+                if (inputHelper.KeyPressed(Keys.A))
+                {
+                    //tetromino.X--; // This one probably has to be changed with set
+                    
+                    Oblok.Left();
+                }
+                timer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (timer < 0)
+                {
+                    Console.WriteLine("S");
+                    Oblok.Down();
+                    timer = (float)gameTime.ElapsedGameTime.TotalMilliseconds + speed;
+                }
+                if (inputHelper.KeyPressed(Keys.D))
+                {
+                    //tetromino.X++; // This one probably has to be changed with set
+                    Console.WriteLine("D");
+                    Oblok.Right();
+                }
+				for (int x = 0; x < Oblok.Width; x++)
+				{
+					Console.WriteLine();
+					for (int y = 0; y < Oblok.Width; y++)
+					{
+						if ((grid.Check(Oblok.Position.X, Oblok.Position.Y, x, y)) && (Oblok.Check(x, y) != false))
+							Down = true;
+					}
+				}
+				if (Down)
+				{
+					for (int x = 0; x < Oblok.Width; x++)
+					{
+						Console.WriteLine();
+						for (int y = 0; y < Oblok.Width; y++)
+						{
+							if (Oblok.Check(x, y) != false)
+								grid.Place(Oblok.Position.X, Oblok.Position.Y, x, y);
+						}
+					}
+					Oblok.Clear();
+					Down = false;
+					chooseBlock.genNext();
+				}
+                break;
+            case 2:
+                if (inputHelper.KeyPressed(Keys.W))
+                {
+                    
+                    Tblok.Up();
+                }
+                if (inputHelper.KeyPressed(Keys.A))
+                {
+                    //tetromino.X--; // This one probably has to be changed with set
+                    
+                    Tblok.Left();
+                }
+                timer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (timer < 0)
+                {
+                    Console.WriteLine("S");
+                    Tblok.Down();
+                    timer = (float)gameTime.ElapsedGameTime.TotalMilliseconds + speed;
+                }
+                if (inputHelper.KeyPressed(Keys.D))
+                {
+                    //tetromino.X++; // This one probably has to be changed with set
+                    Console.WriteLine("D");
+                    Tblok.Right();
+                }
+				for (int x = 0; x < Tblok.Width; x++)
+				{
+					Console.WriteLine();
+					for (int y = 0; y < Tblok.Width; y++)
+					{
+						if ((grid.Check(Tblok.Position.X, Tblok.Position.Y, x, y)) && (Tblok.Check(x, y) != false))
+							Down = true;
+					}
+				}
+				if (Down)
+				{
+					for (int x = 0; x < Tblok.Width; x++)
+					{
+						Console.WriteLine();
+						for (int y = 0; y < Tblok.Width; y++)
+						{
+							if (Tblok.Check(x, y) != false)
+								grid.Place(Tblok.Position.X, Tblok.Position.Y, x, y);
+						}
+					}
+					Tblok.Clear();
+					Down = false;
+					chooseBlock.genNext();
+				}
+                break;
+            case 3:
+                if (inputHelper.KeyPressed(Keys.W))
+                {
+                    
+                    Sblok.Up();
+                }
+                if (inputHelper.KeyPressed(Keys.A))
+                {
+                    //tetromino.X--; // This one probably has to be changed with set
+                    
+                    Sblok.Left();
+                }
+                timer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (timer < 0)
+                {
+                    Console.WriteLine("S");
+                    Sblok.Down();
+                    timer = (float)gameTime.ElapsedGameTime.TotalMilliseconds + speed;
+                }
+                if (inputHelper.KeyPressed(Keys.D))
+                {
+                    //tetromino.X++; // This one probably has to be changed with set
+                    Console.WriteLine("D");
+                    Sblok.Right();
+                }
+				for (int x = 0; x < Sblok.Width; x++)
+				{
+					Console.WriteLine();
+					for (int y = 0; y < Sblok.Width; y++)
+					{
+						if ((grid.Check(Sblok.Position.X, Sblok.Position.Y, x, y)) && (Sblok.Check(x, y) != false))
+							Down = true;
+					}
+				}
+				if (Down)
+				{
+					for (int x = 0; x < Sblok.Width; x++)
+					{
+						Console.WriteLine();
+						for (int y = 0; y < Sblok.Width; y++)
+						{
+							if (Sblok.Check(x, y) != false)
+								grid.Place(Sblok.Position.X, Sblok.Position.Y, x, y);
+						}
+					}
+					Sblok.Clear();
+					Down = false;
+					chooseBlock.genNext();
+				}
+                break;
+            case 4:
+                if (inputHelper.KeyPressed(Keys.W))
+                {
+                    
+                    Zblok.Up();
+                }
+                if (inputHelper.KeyPressed(Keys.A))
+                {
+                    //tetromino.X--; // This one probably has to be changed with set
+                    
+                    Zblok.Left();
+                }
+                timer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (timer < 0)
+                {
+                    Console.WriteLine("S");
+                    Zblok.Down();
+                    timer = (float)gameTime.ElapsedGameTime.TotalMilliseconds + speed;
+                }
+                if (inputHelper.KeyPressed(Keys.D))
+                {
+                    //tetromino.X++; // This one probably has to be changed with set
+                    Console.WriteLine("D");
+                    Zblok.Right();
+                }
+				for (int x = 0; x < Zblok.Width; x++)
+				{
+					Console.WriteLine();
+					for (int y = 0; y < Zblok.Width; y++)
+					{
+						if ((grid.Check(Zblok.Position.X, Zblok.Position.Y, x, y)) && (Zblok.Check(x, y) != false))
+							Down = true;
+					}
+				}
+				if (Down)
+				{
+					for (int x = 0; x < Zblok.Width; x++)
+					{
+						Console.WriteLine();
+						for (int y = 0; y < Zblok.Width; y++)
+						{
+							if (Zblok.Check(x, y) != false)
+								grid.Place(Zblok.Position.X, Zblok.Position.Y, x, y);
+						}
+					}
+					Zblok.Clear();
+					Down = false;
+					chooseBlock.genNext();
+				}
+                break;
+            case 5:
+                if (inputHelper.KeyPressed(Keys.W))
+                {
+                    
+                    Jblok.Up();
+                }
+                if (inputHelper.KeyPressed(Keys.A))
+                {
+                    //tetromino.X--; // This one probably has to be changed with set
+                    
+                    Jblok.Left();
+                }
+                timer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (timer < 0)
+                {
+                    Console.WriteLine("S");
+                    Jblok.Down();
+                    timer = (float)gameTime.ElapsedGameTime.TotalMilliseconds + speed;
+                }
+                if (inputHelper.KeyPressed(Keys.D))
+                {
+                    //tetromino.X++; // This one probably has to be changed with set
+                    Console.WriteLine("D");
+                    Jblok.Right();
+                }
+				for (int x = 0; x < Jblok.Width; x++)
+				{
+					Console.WriteLine();
+					for (int y = 0; y < Jblok.Width; y++)
+					{
+						if ((grid.Check(Jblok.Position.X, Jblok.Position.Y, x, y)) && (Jblok.Check(x, y) != false))
+							Down = true;
+					}
+				}
+				if (Down)
+				{
+					for (int x = 0; x < Jblok.Width; x++)
+					{
+						Console.WriteLine();
+						for (int y = 0; y < Jblok.Width; y++)
+						{
+							if (Jblok.Check(x, y) != false)
+								grid.Place(Jblok.Position.X, Jblok.Position.Y, x, y);
+						}
+					}
+					Jblok.Clear();
+					Down = false;
+					chooseBlock.genNext();
+				}
+                break;
+            case 6:
+                if (inputHelper.KeyPressed(Keys.W))
+                {
+                    
+                    Lblok.Up();
+                }
+                if (inputHelper.KeyPressed(Keys.A))
+                {
+                    //tetromino.X--; // This one probably has to be changed with set
+                    
+                    Lblok.Left();
+                }
+                timer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (timer < 0)
+                {
+                    Console.WriteLine("S");
+                    Lblok.Down();
+                    timer = (float)gameTime.ElapsedGameTime.TotalMilliseconds + speed;
+                }
+                if (inputHelper.KeyPressed(Keys.D))
+                {
+                    //tetromino.X++; // This one probably has to be changed with set
+                    Console.WriteLine("D");
+                    Lblok.Right();
+                }
+				for (int x = 0; x < Lblok.Width; x++)
+				{
+					Console.WriteLine();
+					for (int y = 0; y < Lblok.Width; y++)
+					{
+						if ((grid.Check(Lblok.Position.X, Lblok.Position.Y, x, y)) && (Lblok.Check(x, y) != false))
+							Down = true;
+					}
+				}
+				if (Down)
+				{
+					for (int x = 0; x < Lblok.Width; x++)
+					{
+						Console.WriteLine();
+						for (int y = 0; y < Lblok.Width; y++)
+						{
+							if (Lblok.Check(x, y) != false)
+								grid.Place(Lblok.Position.X, Lblok.Position.Y, x, y);
+						}
+					}
+					Lblok.Clear();
+					Down = false;
+					chooseBlock.genNext();
+				}
+                break;
+        }
+
     }
 
     public void Update(GameTime gameTime)
