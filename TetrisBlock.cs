@@ -73,11 +73,11 @@ class TetrisBlock
 
     public void Down()
     {
-        position = position + new Vector2(0, 1 * gridblock.Width);
+        position += new Vector2(0, 1 * gridblock.Width);
     }
     public void Up()
     {
-        position = position - new Vector2(0, 1 * gridblock.Width);
+        position -= new Vector2(0, 1 * gridblock.Width);
     }
     public void Left()
     {
