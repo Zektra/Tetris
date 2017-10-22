@@ -133,12 +133,12 @@ public class TetrisBlock
 	/*
      * sprite for representing a single grid block
      */
-	Texture2D gridblock;
+	public Texture2D gridblock;
 
 	/*
      * the position of the tetris grid
      */
-	Vector2 position;
+	public Vector2 position;
 
 	/*
      * Position of block

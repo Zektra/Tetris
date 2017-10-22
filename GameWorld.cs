@@ -139,6 +139,7 @@ class GameWorld
     {
 
         spriteBatch.Begin();
+		grid.Draw(gameTime, spriteBatch);
 		switch (chooseBlock.Current)
 		{
 			case 0:
@@ -161,9 +162,8 @@ class GameWorld
 				break;
 			case 6:
 				Lblok.Draw(gameTime, spriteBatch);
-				break;	
+				break;
 		}
-		grid.Draw(gameTime, spriteBatch);
         DrawText("Hello!", Vector2.Zero, spriteBatch);
         spriteBatch.End();
     }
